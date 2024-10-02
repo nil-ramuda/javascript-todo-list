@@ -5,17 +5,17 @@ const onClickAdd = () => {
   ++incompleteTasksCount;
 
   const inputText = document.getElementById("add-text").value;
-  document.getElementById("add-text").value = "";
   const $li = document.createElement("li");
   const $div = document.createElement("div");
   const $input = document.createElement("input");
-  const $spanAllTasks = document.getElementById("all-tasks");
-  const $spanCompleteTasks = document.getElementById("complete-tasks");
-  const $spanIncompleteTasks = document.getElementById("incomplete-tasks");
   const $label = document.createElement("label");
   const $editButton = document.createElement("button");
   const $deleteButton = document.createElement("button");
   const $saveButton = document.createElement("button");
+  document.getElementById("add-text").value = "";
+  const $spanAllTasks = document.getElementById("all-tasks");
+  const $spanCompleteTasks = document.getElementById("complete-tasks");
+  const $spanIncompleteTasks = document.getElementById("incomplete-tasks");
   const $changeInputText = e => $label.innerText = e.target.value;
 
   const plusAndMinusEachOtherTasksCount = () => {
