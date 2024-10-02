@@ -1,9 +1,8 @@
 let completeTasksCount = incompleteTasksCount = 0;
+const calculateAllTasksCount = () => completeTasksCount + incompleteTasksCount;
     
 const onClickAdd = () => {
   ++incompleteTasksCount;
-
-  const calculateAllTasksCount = () => completeTasksCount + incompleteTasksCount;  
 
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
@@ -61,19 +60,6 @@ const onClickAdd = () => {
     $div.appendChild($saveButton);
   });
 
-
-  $deleteButton.innerText = "削除";
-  $deleteButton.addEventListener("click", () => {
-    const result = confirm("本当に削除してよろしいですか？");
-    if (!result) return;
-    const deleteTargetTodo = $deleteButton.closest("li");
-    document.getElementById("todo-list").removeChild(deleteTargetTodo);
-    $input.checked ? --completeTasksCount : --incompleteTasksCount;
-    $spanAllTasks.innerText = calculateAllTasksCount();
-    $spanCompleteTasks.innerText = completeTasksCount;
-    $spanIncompleteTasks.innerText = incompleteTasksCount;
-  });
-
   $saveButton.addEventListener("click", () => {
     $input.addEventListener("input", {handleEvent: $changeInputText});
     $input.type = "checkbox",
@@ -86,6 +72,18 @@ const onClickAdd = () => {
     $div.appendChild($editButton);
     $div.appendChild($deleteButton);
   })
+
+  $deleteButton.innerText = "削除";
+  $deleteButton.addEventListener("click", () => {
+    const result = confirm("本当に削除してよろしいですか？");
+    if (!result) return;
+    const deleteTargetTodo = $deleteButton.closest("li");
+    document.getElementById("todo-list").removeChild(deleteTargetTodo);
+    $input.checked ? --completeTasksCount : --incompleteTasksCount;
+    $spanAllTasks.innerText = calculateAllTasksCount();
+    $spanCompleteTasks.innerText = completeTasksCount;
+    $spanIncompleteTasks.innerText = incompleteTasksCount;
+  });
   
   const switchIsComplete = () => {
     $input.checked = !$input.checked;
