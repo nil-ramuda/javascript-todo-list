@@ -45,6 +45,7 @@ const onClickAdd = () => {
   $deleteButton.className = "delete-button";
 
   $spanAllTasks.innerText = calculateAllTasksCount();
+  $spanCompleteTasks.innerText = completeTasksCount;
   $spanIncompleteTasks.innerText = incompleteTasksCount;
   console.log($spanAllTasks.innerText);
   console.log($spanIncompleteTasks.innerText);
@@ -90,6 +91,7 @@ const onClickAdd = () => {
     plusAndMinusEachOtherTasksCount();
   };
   $label.addEventListener("click", { handleEvent: switchIsComplete });
+  $input.addEventListener("click", { handleEvent: plusAndMinusEachOtherTasksCount });
 
   $div.appendChild($input);
   $div.appendChild($label);
