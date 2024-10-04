@@ -16,22 +16,25 @@ const onClickAdd = () => {
   const $spanAllTasks = document.getElementById("all-tasks");
   const $spanCompleteTasks = document.getElementById("complete-tasks");
   const $spanIncompleteTasks = document.getElementById("incomplete-tasks");
-  const $changeInputText = e => $label.innerText = e.target.value;
+  const $changeInputText = () => {
+    const $inputValue = $input.value;
+    $label.innerText = $inputValue;
+  }
 
   const plusAndMinusEachOtherTasksCount = () => {
     if ($input.checked) {
-      ++completeTasksCount,
-      --incompleteTasksCount,
+      ++completeTasksCount;
+      --incompleteTasksCount;
       $spanCompleteTasks.innerText = completeTasksCount;
       $spanIncompleteTasks.innerText = incompleteTasksCount;
     } else {
-      --completeTasksCount,
-      ++incompleteTasksCount,
+      --completeTasksCount;
+      ++incompleteTasksCount;
       $spanCompleteTasks.innerText = completeTasksCount;
       $spanIncompleteTasks.innerText = incompleteTasksCount;
     }    
     $spanAllTasks.innerText = calculateAllTasksCount();
-}
+  }
   
   $saveButton.innerText = "保存";
   $input.type = "checkbox"
@@ -39,6 +42,7 @@ const onClickAdd = () => {
   $input.id = "todo-item";
   $input.className = "todo-checkbox";
   $label.innerText = inputText;
+  $label.className = "todo-label";
   $div.className = "list-row";
   $editButton.innerText = "編集";
   $editButton.className = "edit-button";
@@ -47,12 +51,10 @@ const onClickAdd = () => {
   $spanAllTasks.innerText = calculateAllTasksCount();
   $spanCompleteTasks.innerText = completeTasksCount;
   $spanIncompleteTasks.innerText = incompleteTasksCount;
-  console.log($spanAllTasks.innerText);
-  console.log($spanIncompleteTasks.innerText);
 
-  $editButton.addEventListener("click", () => {
-    $editButton.remove(),
-    $deleteButton.remove(),
+  $editButton.addEventListener("click", function edit() {
+    $editButton.remove();
+    $deleteButton.remove();
     $label.remove();
     $input.type = "text";
     $input.value = $label.innerText;
@@ -61,13 +63,12 @@ const onClickAdd = () => {
     $div.appendChild($saveButton);
   });
 
-  $saveButton.addEventListener("click", () => {
-    $input.addEventListener("input", {handleEvent: $changeInputText});
-    $input.type = "checkbox",
-    $input.value = "",
-    $input.removeAttribute("value"),
-    $saveButton.remove(),
-    $label.appendChild($input);
+  $saveButton.addEventListener("click", function save() {
+    $input.type = "checkbox";
+    $input.value = "";
+    $input.removeAttribute("value");
+    $saveButton.remove();
+    $input.oninput = null;
     $div.appendChild($input);
     $div.appendChild($label);
     $div.appendChild($editButton);
