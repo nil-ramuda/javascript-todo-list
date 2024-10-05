@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript ToDo リスト</title>
+  <link rel="stylesheet" href="./todo-list.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ToDo リスト</h1>
+    <div class="input-section">
+      <input id="add-text" type="text" placeholder="ToDoを入力">
+      <button id="add-button">追加</button>
+    </div>
+    <div class="task-status">
+      <p>すべてのタスク：<span id="all-tasks"></span></p>
+      <p>完了：<span id="complete-tasks"></span></p>
+      <p>未完了：<span id="incomplete-tasks"></span></p>
+    </div>
+    <ul id="todo-list">
+    </ul>
+  </div>
+  <script src="./todo-list.js"></script>
+</body>
+</html>
