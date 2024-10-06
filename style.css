@@ -187,8 +187,8 @@ input[type="text"].todo-checkbox {
   margin-right: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 4px;
-  height: 36px; /* 入力フィールドの高さを設定 */
-  font-size: 1rem; /* フォントサイズを調整 */
+  height: 36px;
+  font-size: 1rem;
 }
 
 button:not(.edit-button):not(.delete-button) {
@@ -200,7 +200,7 @@ button:not(.edit-button):not(.delete-button) {
   transition: all 0.3s ease;
   background-color: #28a745;
   color: white;
-  height: 36px; /* ボタンの高さを入力フィールドに合わせる */
+  height: 36px;
 }
 
 button:not(.edit-button):not(.delete-button):hover {
